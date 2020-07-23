@@ -45,7 +45,7 @@ namespace Edu.Api.Controllers
 
         // POST api/<ApplicationsController>
         [HttpPost]
-        public async Task<IActionResult> Post(ApplicationDTO applicationDto)
+        public async Task<IActionResult> Post([FromForm]ApplicationDTO applicationDto)
         {
             var createApplicationCommand = new CreateApplicationCommand(applicationDto);
             var response = await _mediator.Send(createApplicationCommand);
@@ -56,7 +56,7 @@ namespace Edu.Api.Controllers
 
         // PUT api/<ApplicationsController>/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> Put(int id, [FromBody] ApplicationDTO applicationDto)
+        public async Task<IActionResult> Put(int id, [FromForm] ApplicationDTO applicationDto)
         {
             var updateApplicationCommand = new UpdateApplicationCommand(id, applicationDto);
             var response = await _mediator.Send(updateApplicationCommand);

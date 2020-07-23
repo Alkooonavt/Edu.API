@@ -6,6 +6,7 @@ using Domain.DataAccess.DTO;
 using Domain.DataAccess.Interfaces;
 using Domain.Model;
 using Microsoft.EntityFrameworkCore;
+using Profile = Domain.Model.Profile;
 
 namespace Domain.DataAccess.Implementations
 {
@@ -18,6 +19,15 @@ namespace Domain.DataAccess.Implementations
         {
             _context = context;
             _mapper = mapper;
+            _context.Applications.Add(new Application
+            {
+                Iin = "dasda",
+                College = College.ENU,
+                Profile2 = Profile.chemistry,
+                Profile1 = Profile.biology,
+                Score = 45
+            });
+            _context.SaveChanges();
         }
         public async Task<ApplicationDTO> GetById(int id)
         {
